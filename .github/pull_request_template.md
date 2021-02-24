@@ -16,10 +16,10 @@
 - Sonstiges <!--- gerne spezifizieren -->
 
 ## Code Review
-- [ ] @Jasmin/@Jonathan
+- [ ] @NimsaJ150/@JonathanFreydank
 
 ## Fachliche Review
-- [ ] @Tom
+- [ ] tba
 
 ## Umsetzung
 <!--- Bitte kurz beschreiben, wie festgestellt werden kann, ob die Funktion implementiert wurde -->
