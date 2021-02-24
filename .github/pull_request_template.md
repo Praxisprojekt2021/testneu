@@ -1,28 +1,25 @@
 ## Bereich
 <!--- Bitte Unzutreffendes streichen -->
-- Frontend
-- Backend
+* Frontend
+* Backend
    - REST-API
    - Logik
    - Database-Handler
-- Database
+* Database
 
 ## Typ
-<!--- Bitte Zutreffendes ankreuzen -->
-- Feature
-- Testfinding
-- Bug
-- Design
-- Sonstiges <!--- gerne spezifizieren -->
+<!--- Bitte Unzutreffendes streichen -->
+* Feature
+* Testfinding
+* Bug
+* Design
+* Sonstiges <!--- bitte spezifizieren -->
 
 ## Code Review
-- [ ] @NimsaJ150/@JonathanFreydank
+- [ ] @NimsaJ150 / @JonathanFreydank
 
 ## Fachliche Review
-- [ ] tba
-
-## Umsetzung
-<!--- Bitte kurz beschreiben, wie festgestellt werden kann, ob die Funktion implementiert wurde -->
+- [ ] tba <!--- bitte entsprechende Person zuweisen -->
 
 ## Anmerkungen
 <!--- Falls wichtige Anmerkungen zu machen sind -->
