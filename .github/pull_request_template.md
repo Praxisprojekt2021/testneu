@@ -18,7 +18,7 @@
 ## Code Review
 - [ ] @NimsaJ150 / @JonathanFreydank
 
-## Fachliche Review
+## Funktionale Review
 - [ ] tba <!--- bitte entsprechende Person zuweisen -->
 
 ## Anmerkungen
