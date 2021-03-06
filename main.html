@@ -1,24 +1,44 @@
 <html>
 <body>
 <div>
+    <!--Statische Komponente-->
     <p>Statisch</p>
 </div>
 <div id="test">
-    <button onClick="refresh()">Refresh Component</button>
+    <!--Dynamische Komponente-->
+    <button onClick="refresh()">Inhalt aktualisieren</button>
     <p>Server A Status = green</p>
+</div>
+<div id="testEingabe">
+    <!--Dynamische Komponente 2-->
+    <input type="text" id="Komponente">
+    <input type="text" id="Status">
+    <button onClick="submit(document.getElementById('Komponente').value, document.getElementById('Status').value)">Hinzufuegen</button>
 </div>
 </body>
 
 <script>
-    function refresh(){
-    //HTTP Call to Back-End
-
+    function refresh() {
+    // create HTTP request
+    // send HTTP Request to Back-End
+    // receive response from Back-End (=mockData)
     let mockData = '{"components":[{"component": "Datenbank", "info": {"status":"green", "requiredAvailability":"99%"}},{"component":"Server", "info": {"status":"red", "requiredAvailability":"99%"}}]}';
+    
+    // process the response
     let json = JSON.parse(mockData);
+    
+    // update the view
     for(i=0; i<json.components.length; i++) {
         document.querySelector("#test").innerHTML = document.querySelector("#test").innerHTML + "<br>" +  json.components[i].component + " Status = "+ json.components[i].info.status;
     }
     }
 
+    function submit(component, status) {
+        // HTTP call to save the changes in Back-End
+        // Back-End returns response code
+        // refresh data
+        debugger;
+        document.querySelector("#test").innerHTML = document.querySelector("#test").innerHTML + "<br>" + component + " Status = " + status;
+    }
 </script>
 </html>
