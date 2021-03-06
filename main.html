@@ -1,0 +1,24 @@
+<html>
+<body>
+<div>
+    <p>Statisch</p>
+</div>
+<div id="test">
+    <button onClick="refresh()">Refresh Component</button>
+    <p>Server A Status = green</p>
+</div>
+</body>
+
+<script>
+    function refresh(){
+    //HTTP Call to Back-End
+
+    let mockData = '{"components":[{"component": "Datenbank", "info": {"status":"green", "requiredAvailability":"99%"}},{"component":"Server", "info": {"status":"red", "requiredAvailability":"99%"}}]}';
+    let json = JSON.parse(mockData);
+    for(i=0; i<json.components.length; i++) {
+        document.querySelector("#test").innerHTML = document.querySelector("#test").innerHTML + "<br>" +  json.components[i].component + " Status = "+ json.components[i].info.status;
+    }
+    }
+
+</script>
+</html>
