@@ -17,31 +17,36 @@
     <br><br><br>
     <img src="pic_ajax.gif">
     <p>Source: https://www.w3schools.com/xml/ajax_intro.asp</p>
+
 </div>
 </body>
 
 <script>
     function refresh() {
-    // create HTTP request
-    // send HTTP Request to Back-End
-    // receive response from Back-End (=mockData)
+    // Erstellen eines HTTP Requests
+    // senden des HTTP Requests an das Back-End
+    // Erhalten der Response vom Back-End (=mockData)
     let mockData = '{"components":[{"component": "Datenbank", "info": {"status":"green", "requiredAvailability":"99%"}},{"component":"Server", "info": {"status":"red", "requiredAvailability":"99%"}}]}';
     
-    // process the response
+    // Prozessieren der Response
     let json = JSON.parse(mockData);
     
-    // update the view
+    // aktualisieren der View
     for(i=0; i<json.components.length; i++) {
         document.querySelector("#test").innerHTML = document.querySelector("#test").innerHTML + "<br>" +  json.components[i].component + " Status = "+ json.components[i].info.status;
     }
     }
 
     function submit(component, status) {
-        // HTTP call to save the changes in Back-End
-        // Back-End returns response code
-        // refresh data
-        debugger;
+        // HTTP call, um die Änderungen im Backend zu speichern
+        // Back-End antwortet mit Response Code (z.B. 200 OK)
+        // HTTP request, um die aktuellen Daten zu bekommen
+        // Aktualisieren der View
         document.querySelector("#test").innerHTML = document.querySelector("#test").innerHTML + "<br>" + component + " Status = " + status;
     }
+
+    let a = "Hallo";
+
+
 </script>
 </html>
