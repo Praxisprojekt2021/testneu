@@ -1,4 +1,4 @@
-# testneu
+# Beispielprojekt AJAX Realtime Updates einzelner Website-Komponenten
 <b>Anleitung für das Ausführen des Projekts</b>
 
 Da es nicht erlaubt ist, Requests an das eigene Gerät zu senden (same origin policy von JS), ist ein json-server nötig, der die mock-Daten hostet.
