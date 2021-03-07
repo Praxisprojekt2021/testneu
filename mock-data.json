@@ -1,0 +1,20 @@
+{
+  "components": [
+    {
+      "id": "1",
+      "component": "Datenbank",
+      "info": {
+        "status": "green",
+        "requiredAvailability": "99%"
+      }
+    },
+    {
+      "id": "2",
+      "component": "Server",
+      "info": {
+        "status": "yellow",
+        "requiredAvailability": "99%"
+      }
+    }
+  ]
+}

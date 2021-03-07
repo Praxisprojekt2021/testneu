@@ -1,40 +1,50 @@
 <html>
-<body>
-<div>
-    <!--Statische Komponente-->
-    <p>Statisch</p>
-</div>
-<div id="test">
-    <!--Dynamische Komponente-->
-    <button onClick="refresh()">Inhalt aktualisieren</button>
-    <p>Server A Status = green</p>
-</div>
-<div id="testEingabe">
-    <!--Dynamische Komponente 2-->
-    <input type="text" id="Komponente">
-    <input type="text" id="Status">
-    <button onClick="submit(document.getElementById('Komponente').value, document.getElementById('Status').value)">Hinzufuegen</button>
-    <br><br><br>
-    <img src="pic_ajax.gif">
-    <p>Source: https://www.w3schools.com/xml/ajax_intro.asp</p>
 
-</div>
+<body>
+    <div>
+        <!--Statische Komponente-->
+        <p>Statisch</p>
+    </div>
+    <div id="test">
+        <!--Dynamische Komponente-->
+        <button onClick="refresh()">Inhalt aktualisieren</button>
+    </div>
+    <div id="testEingabe">
+        <!--Dynamische Komponente 2-->
+        <input type="text" id="Komponente">
+        <input type="text" id="Status">
+        <button
+            onClick="submit(document.getElementById('Komponente').value, document.getElementById('Status').value)">Hinzufuegen</button>
+        <br><br><br>
+        <img src="pic_ajax.gif">
+        <p>Source: https://www.w3schools.com/xml/ajax_intro.asp</p>
+
+    </div>
 </body>
 
 <script>
     function refresh() {
-    // Erstellen eines HTTP Requests
-    // senden des HTTP Requests an das Back-End
-    // Erhalten der Response vom Back-End (=mockData)
-    let mockData = '{"components":[{"component": "Datenbank", "info": {"status":"green", "requiredAvailability":"99%"}},{"component":"Server", "info": {"status":"red", "requiredAvailability":"99%"}}]}';
-    
-    // Prozessieren der Response
-    let json = JSON.parse(mockData);
-    
-    // aktualisieren der View
-    for(i=0; i<json.components.length; i++) {
-        document.querySelector("#test").innerHTML = document.querySelector("#test").innerHTML + "<br>" +  json.components[i].component + " Status = "+ json.components[i].info.status;
-    }
+        // Erstellen eines HTTP Requests
+        // senden des HTTP Requests an den Server
+        // Erhalten der Response vom Server (=json)
+        let xhttp = new XMLHttpRequest();
+
+        xhttp.open("GET", "http://localhost:3000/components", true);
+
+        xhttp.onload = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                // Prozessieren der Response
+                let json = JSON.parse(this.responseText);
+
+                // aktualisieren der View
+                for (i = 0; i < json.length; i++) {
+                    document.querySelector("#test").innerHTML = document.querySelector("#test").innerHTML + "<br>" + json[i].component + " Status = " + json[i].info.status;
+                }
+            }
+        };
+        
+        xhttp.send();
+
     }
 
     function submit(component, status) {
@@ -42,8 +52,26 @@
         // Back-End antwortet mit Response Code (z.B. 200 OK)
         // HTTP request, um die aktuellen Daten zu bekommen
         // Aktualisieren der View
-        document.querySelector("#test").innerHTML = document.querySelector("#test").innerHTML + "<br>" + component + " Status = " + status;
+
+        let xhttp = new XMLHttpRequest();
+        xhttp.open("POST", "http://localhost:3000/components", true);
+        xhttp.setRequestHeader("Content-Type", "application/json");
+
+        xhttp.onreadystatechange = function() {
+    if (this.readyState === XMLHttpRequest.DONE && (this.status === 200 || this.status === 201)) {
+        // Neuladen der Daten
+        refresh();
     }
-    
+}
+
+  let params = `{"component": "${component}", "info": {"status": "${status}", "requiredAvailability":"99%"}}`;
+  // let params = JSON.stringify(param);
+
+        xhttp.send(params);
+
+        refresh();
+    }
+
 </script>
+
 </html>
