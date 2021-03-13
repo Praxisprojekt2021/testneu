@@ -1,11 +1,14 @@
 import i18next from 'https://deno.land/x/i18next/index.js'
     import Backend from 'https://deno.land/x/i18next_fs_backend/index.js'
+   
+   function a(){
     i18next
-  .use(Backend)
+  //.use(Backend)
   .init({
     /*backend: {
       loadPath: __dirname + 'i18n/de.json',
     }*/
+    lng: 'de',
     resources: {
     de: {
       translation: {
@@ -19,3 +22,4 @@ import i18next from 'https://deno.land/x/i18next/index.js'
   // initialized and ready to go!
   document.getElementById('output').innerHTML = i18next.t('hello');
 };
+   }
