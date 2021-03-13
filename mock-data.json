@@ -15,6 +15,14 @@
         "status": "yellow",
         "requiredAvailability": "99%"
       }
+    },
+    {
+      "component": "Server B",
+      "info": {
+        "status": "Green",
+        "requiredAvailability": "99%"
+      },
+      "id": "1b7NRqG"
     }
   ]
 }

@@ -13,3 +13,5 @@ Falls der obige Command eine Fehlermeldung liefert muss die Datei C:\Users\<User
 
 Nachdem der Json-Server läuft, kann man die Webseite öffnen, indem man die main.html-Datei lokal auswählt und im Browser öffnet.
 
+npm install i18next --save
+npm install i18next-node-fs-backend --save

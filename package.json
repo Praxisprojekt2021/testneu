@@ -1,0 +1,26 @@
+{
+  "name": "testneu",
+  "version": "1.0.0",
+  "description": "Testprojekt",
+  "main": "main.html",
+  "type": "module",
+  "dependencies": {
+    "i18next": "^19.9.2",
+    "i18next-fs-backend": "^1.1.0",
+    "i18next-node-fs-backend": "^2.1.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo Hello"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Praxisprojekt2021/testneu.git"
+  },
+  "author": "LB",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Praxisprojekt2021/testneu/issues"
+  },
+  "homepage": "https://github.com/Praxisprojekt2021/testneu#readme"
+}
