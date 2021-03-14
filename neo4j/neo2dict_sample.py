@@ -1,25 +1,5 @@
-"""
-This shows how neo4j data can be delivered to the server as dict
-
-
-TO RUN
-install:
-    pip install neomodel
-run local:
-    neo4j local database:
-        user: neo4j
-        password: 123456
-        address: localhost:7687
-"""
-
 from neomodel import (config, StructuredNode, StringProperty, IntegerProperty, UniqueIdProperty, RelationshipTo)
-
-config.DATABASE_URL = 'bolt://neo4j:123456@localhost:7687'
-
-name = 'Aaron'
-age = 123
-
-"""Not used yet"""
+import configparser
 
 
 class Country(StructuredNode):
@@ -35,7 +15,19 @@ class Person(StructuredNode):
     country = RelationshipTo(Country, 'IS_FROM')
 
 
+def init_db():
+    parser = configparser.ConfigParser()
+    # REPLACE PATH
+    parser.read_file(open(r'C:\Users\aaron\PycharmProjects\testneu\neo4j\config.txt'))
+    config.DATABASE_URL = 'bolt://{}:{}@{}:{}'.format(parser.get('neo4j', 'user'), parser.get('neo4j', 'password'),
+                                                      parser.get('neo4j', 'ip'), parser.get('neo4j', 'port')).replace(
+        '"',
+        '')
+
+
 def add_person():
+    name = 'Aaron'
+    age = 321
     person = Person(name=name, age=age).save()
     person.save()
     print("Created Person with name ", person.name)
@@ -53,6 +45,7 @@ def output(get_contents):
 
 
 if __name__ == '__main__':
+    init_db()
     a = 1
     while (a):
         try:
@@ -62,4 +55,6 @@ if __name__ == '__main__':
         else:
             a = 0
 
-    output(contents)
+    print(config.DATABASE_URL)
+    # IDE says can be undefined, while loop in main does not allow for that though
+    print(contents)
